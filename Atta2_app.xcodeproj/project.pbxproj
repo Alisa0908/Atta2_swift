@@ -18,6 +18,7 @@
 		48FF8FAC2750885500442D70 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FF8FAB2750885400442D70 /* Category.swift */; };
 		48FF8FAE2751C44000442D70 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FF8FAD2751C43F00442D70 /* Search.swift */; };
 		48FF8FB02751F42300442D70 /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FF8FAF2751F42300442D70 /* ItemsViewController.swift */; };
+		48FF8FB227524E2600442D70 /* ShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FF8FB127524E2600442D70 /* ShowViewController.swift */; };
 		A2E8530E39EC808DC203DD86 /* Pods_Atta2_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B58692E8249CA93190BAA0DE /* Pods_Atta2_app.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		48FF8FAB2750885400442D70 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		48FF8FAD2751C43F00442D70 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		48FF8FAF2751F42300442D70 /* ItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
+		48FF8FB127524E2600442D70 /* ShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowViewController.swift; sourceTree = "<group>"; };
 		8FC9A11792BB53C9A05C3824 /* Pods-Atta2_app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Atta2_app.debug.xcconfig"; path = "Target Support Files/Pods-Atta2_app/Pods-Atta2_app.debug.xcconfig"; sourceTree = "<group>"; };
 		B58692E8249CA93190BAA0DE /* Pods_Atta2_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Atta2_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D664E394942D5CF3A9DDD743 /* Pods-Atta2_app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Atta2_app.release.xcconfig"; path = "Target Support Files/Pods-Atta2_app/Pods-Atta2_app.release.xcconfig"; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				48FF8FAB2750885400442D70 /* Category.swift */,
 				48FF8FA7274F627C00442D70 /* Item.swift */,
 				48FF8F99274F332600442D70 /* Main.storyboard */,
+				48FF8FB127524E2600442D70 /* ShowViewController.swift */,
 				48FF8F9C274F332B00442D70 /* Assets.xcassets */,
 				48FF8F9E274F332B00442D70 /* LaunchScreen.storyboard */,
 				48FF8FA1274F332B00442D70 /* Info.plist */,
@@ -226,6 +229,7 @@
 				48FF8F98274F332600442D70 /* ViewController.swift in Sources */,
 				48FF8F94274F332600442D70 /* AppDelegate.swift in Sources */,
 				48FF8F96274F332600442D70 /* SceneDelegate.swift in Sources */,
+				48FF8FB227524E2600442D70 /* ShowViewController.swift in Sources */,
 				48FF8FB02751F42300442D70 /* ItemsViewController.swift in Sources */,
 				48FF8FAC2750885500442D70 /* Category.swift in Sources */,
 				48FF8FAE2751C44000442D70 /* Search.swift in Sources */,

@@ -6,30 +6,76 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class ItemsViewController: UIViewController {
+    let consts = Constants.shared
     @IBOutlet weak var itemsTable: UITableView!
+    var searches: [Search] = []
+    var categories: [Category] = []
+    let headers: HTTPHeaders = [
+        "Content-Type": "application/json",
+        "ACCEPT": "application/json"
+    ]
+    var results2: [Search] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        itemTableView.dataSource = self
+        itemsTable.dataSource = self
+        itemsTable.delegate = self
+        loadCategories()
     }
     
+    func loadCategories() {
+        let catStr = "\(consts.baseUrl)/api/categories"
+        let catUrl = URL(string: catStr)!
+        AF.request(catUrl, method: .get, headers: headers).responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                self.categories = []
+                let json = JSON(value).arrayValue
+                
+                for categories in json {
+                    let category = Category(id: categories["id"].int!, name: categories["name"].string!)
+                    self.categories.append(category)
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+            }
+        }
+        itemsTable.reloadData()
+        print("categories:",categories)
+        print("results2:",results2)
+    }
 }
 
-extension ViewController: UITableViewDataSource {
-    //セクションの中に表示するセルの数
+extension ItemsViewController: UITableViewDataSource {
+     //セクションの中に表示するセルの数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return  items.count
+        return  results2.count
     }
     //セルを生成(インスタンス化)して、そのLabelに検索結果の記事のタイトルを表示
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
-        print(type(of: categories))
+        let cell = tableView.dequeueReusableCell(withIdentifier: "itemsCell", for: indexPath)
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableView.automaticDimension
+//        var content = cell.defaultContentConfiguration()
+//        content.text = categories[indexPath.row].name + " | " + results2[indexPath.row].lost_desc + " | " + results2[indexPath.row].feature
+       
+
+        let label1 = cell.viewWithTag(1) as! UILabel
+        let label2 = cell.viewWithTag(2) as! UILabel
+        let label3 = cell.viewWithTag(3) as! UILabel
+        
+        label1.text = categories[results2[indexPath.row].category_id - 1].name
+        label2.text = results2[indexPath.row].lost_desc
+        label3.text = results2[indexPath.row].feature
+        
+//        cell.contentConfiguration = content
         print(categories)
-        var content = cell.defaultContentConfiguration()
-        content.text = String(items[indexPath.row].id) + " | " + categories[indexPath.row].name + " | " + items[indexPath.row].lost_desc + " | " + items[indexPath.row].feature
-        cell.contentConfiguration = content
+        print(results2)
+
         return cell
     }
     //セクションの数を設定
@@ -37,3 +83,19 @@ extension ViewController: UITableViewDataSource {
         return 1
     }
 }
+
+//extension ItemsViewController: UITableViewDelegate {
+//    //テーブルビューのRセルがタップされた時に呼ばれるデリゲートメソッド
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        //Web Kit Viewを置いた画面をインスタンス化
+//        let showVC = self.storyboard?.instantiateViewController(withIdentifier: "showVC") as! ShowViewController
+//        let item = items[indexPath.row]
+//
+//       //記事のURLを渡す
+//        showVC.url = item.urlString
+//        showVC.title = item.title
+//        navigationController?.modalPresentationStyle = .fullScreen
+//       //Web Kit Viewを置いた画面に遷移
+//        navigationController?.pushViewController(showVC, animated: true)
+//    }
+//}
