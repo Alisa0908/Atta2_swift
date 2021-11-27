@@ -244,35 +244,54 @@
                                 <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="施設名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jrc-WY-8XR">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="施設名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jrc-WY-8XR">
                                 <rect key="frame" x="61" y="249" width="94" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="94" id="BrU-gy-cpz"/>
+                                    <constraint firstAttribute="height" constant="37" id="DLB-mw-513"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="31"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="電話番号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="da4-Tx-13A">
-                                <rect key="frame" x="176" y="338" width="126" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WeV-fY-qFm">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="電話ロゴ" translatesAutoresizingMaskIntoConstraints="NO" id="WeV-fY-qFm">
                                 <rect key="frame" x="76" y="327" width="65" height="59"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="65" id="RYR-fF-tiO"/>
+                                    <constraint firstAttribute="height" constant="59" id="uqc-lz-52S"/>
+                                </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="電話番号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="da4-Tx-13A">
+                                <rect key="frame" x="176" y="336" width="126" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="atH-bZ-GEE"/>
+                                    <constraint firstAttribute="width" constant="126" id="hE8-dr-O1T"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7aS-jk-b8r"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="WeV-fY-qFm" firstAttribute="leading" secondItem="7aS-jk-b8r" secondAttribute="leading" constant="76" id="7E3-9l-YFj"/>
+                            <constraint firstItem="Jrc-WY-8XR" firstAttribute="leading" secondItem="7aS-jk-b8r" secondAttribute="leading" constant="61" id="Ki8-4a-xCO"/>
                             <constraint firstItem="Dvh-fh-ced" firstAttribute="leading" secondItem="7aS-jk-b8r" secondAttribute="leading" id="TqB-mI-z8S"/>
                             <constraint firstItem="djO-Kv-3z8" firstAttribute="centerX" secondItem="ygL-kh-ahL" secondAttribute="centerX" id="VBx-q8-jSM"/>
+                            <constraint firstItem="WeV-fY-qFm" firstAttribute="top" secondItem="Jrc-WY-8XR" secondAttribute="bottom" constant="41" id="WoB-eg-jXa"/>
                             <constraint firstItem="Dvh-fh-ced" firstAttribute="trailing" secondItem="7aS-jk-b8r" secondAttribute="trailing" id="YYh-8S-6dT"/>
                             <constraint firstItem="Dvh-fh-ced" firstAttribute="top" secondItem="7aS-jk-b8r" secondAttribute="top" id="Zi4-eH-YCL"/>
                             <constraint firstItem="djO-Kv-3z8" firstAttribute="top" secondItem="Dvh-fh-ced" secondAttribute="bottom" constant="30" id="mrJ-Vh-LdO"/>
+                            <constraint firstItem="da4-Tx-13A" firstAttribute="top" secondItem="Jrc-WY-8XR" secondAttribute="bottom" constant="50" id="qQm-8s-vW7"/>
+                            <constraint firstItem="Jrc-WY-8XR" firstAttribute="top" secondItem="djO-Kv-3z8" secondAttribute="bottom" constant="84" id="qkc-uZ-QXM"/>
+                            <constraint firstItem="da4-Tx-13A" firstAttribute="leading" secondItem="WeV-fY-qFm" secondAttribute="trailing" constant="35" id="tOB-Vb-XhG"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="placeLabel" destination="Jrc-WY-8XR" id="ti6-7d-o6Z"/>
+                        <outlet property="telLabel" destination="da4-Tx-13A" id="OgO-8R-YSR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Teb-dM-Iz2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -381,6 +400,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="電話ロゴ" width="256" height="256"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

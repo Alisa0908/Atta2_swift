@@ -45,9 +45,8 @@ class ItemsViewController: UIViewController {
             }
         }
         itemsTable.reloadData()
-        print("categories:",categories)
-        print("results2:",results2)
     }
+    
 }
 
 extension ItemsViewController: UITableViewDataSource {
@@ -60,9 +59,6 @@ extension ItemsViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemsCell", for: indexPath)
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableView.automaticDimension
-//        var content = cell.defaultContentConfiguration()
-//        content.text = categories[indexPath.row].name + " | " + results2[indexPath.row].lost_desc + " | " + results2[indexPath.row].feature
-       
 
         let label1 = cell.viewWithTag(1) as! UILabel
         let label2 = cell.viewWithTag(2) as! UILabel
@@ -71,10 +67,6 @@ extension ItemsViewController: UITableViewDataSource {
         label1.text = categories[results2[indexPath.row].category_id - 1].name
         label2.text = results2[indexPath.row].lost_desc
         label3.text = results2[indexPath.row].feature
-        
-//        cell.contentConfiguration = content
-        print(categories)
-        print(results2)
 
         return cell
     }
@@ -82,20 +74,27 @@ extension ItemsViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
 }
 
-//extension ItemsViewController: UITableViewDelegate {
-//    //テーブルビューのRセルがタップされた時に呼ばれるデリゲートメソッド
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        //Web Kit Viewを置いた画面をインスタンス化
-//        let showVC = self.storyboard?.instantiateViewController(withIdentifier: "showVC") as! ShowViewController
-//        let item = items[indexPath.row]
-//
-//       //記事のURLを渡す
-//        showVC.url = item.urlString
-//        showVC.title = item.title
-//        navigationController?.modalPresentationStyle = .fullScreen
-//       //Web Kit Viewを置いた画面に遷移
+extension ItemsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ItemsVC") as! ItemsViewController
+//        vc.results2 = self.searches
+//        vc.categories = self.categories
+//        self.present(vc,animated: true)
+
+        let showVC = self.storyboard?.instantiateViewController(withIdentifier: "showVC") as! ShowViewController
+        print("#####ここから")
+        print(results2[indexPath.row])
+        showVC.user_id = results2[indexPath.row].user_id
+//        let showVC.result = self.result2
+        
+        self.present(showVC,animated: true)
+
+//        showVC.url = result2.urlString
+//        showVC.title = result2.title
 //        navigationController?.pushViewController(showVC, animated: true)
-//    }
-//}
+    }
+}

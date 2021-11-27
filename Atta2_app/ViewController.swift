@@ -105,6 +105,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                     for items in json {
                         let item = Item(
                             id: items["id"].int!,
+                            user_id: items["user_id"].int!,
                             category_id: items["category_id"].int!,
                             lost_desc: items["lost_desc"].string!,
                             feature: items["feature"].string!
@@ -136,6 +137,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 print(value)
                 for searches in json {
                     let search = Search(
+                        user_id: searches["user_id"].int!,
                         category_id: searches["category_id"].int!,
                         lost_desc: searches["lost_desc"].string!,
                         feature: searches["feature"].string!
