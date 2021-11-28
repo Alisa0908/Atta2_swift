@@ -50,6 +50,7 @@ class ItemsViewController: UIViewController {
 }
 
 extension ItemsViewController: UITableViewDataSource {
+    
      //セクションの中に表示するセルの数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return  results2.count
@@ -64,7 +65,7 @@ extension ItemsViewController: UITableViewDataSource {
         let label2 = cell.viewWithTag(2) as! UILabel
         let label3 = cell.viewWithTag(3) as! UILabel
         
-        label1.text = categories[results2[indexPath.row].category_id - 1].name
+        label1.text = categories[results2[indexPath.row].category_id].name
         label2.text = results2[indexPath.row].lost_desc
         label3.text = results2[indexPath.row].feature
 
@@ -79,22 +80,9 @@ extension ItemsViewController: UITableViewDataSource {
 
 extension ItemsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-//        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ItemsVC") as! ItemsViewController
-//        vc.results2 = self.searches
-//        vc.categories = self.categories
-//        self.present(vc,animated: true)
-
         let showVC = self.storyboard?.instantiateViewController(withIdentifier: "showVC") as! ShowViewController
-        print("#####ここから")
-        print(results2[indexPath.row])
         showVC.user_id = results2[indexPath.row].user_id
-//        let showVC.result = self.result2
         
         self.present(showVC,animated: true)
-
-//        showVC.url = result2.urlString
-//        showVC.title = result2.title
-//        navigationController?.pushViewController(showVC, animated: true)
     }
 }

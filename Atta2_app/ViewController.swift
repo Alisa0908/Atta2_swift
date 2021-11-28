@@ -15,10 +15,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var lostField: UITextField!
     @IBOutlet weak var featureField: UITextField!
     
-    var categories: [Category] = []
+    var categories: [Category] = [    ]
     var items: [Item] = []
     var searches: [Search] = []
-    var selectedId: Int!
+    var selectedId: Any = ""
     
     let headers: HTTPHeaders = [
         "Content-Type": "application/json",
@@ -40,7 +40,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     func pickerView(_ pickerView: UIPickerView,
                     titleForRow row: Int,
                     forComponent component: Int) -> String? {
-        
+        var lists: String = categories[row].name
+//        var categories2 = categories.updateValue("すべて", forKey: "name", atIndex: 0)
+//        categories2 = categories.insert(name: "すべて")
+//        var showLists = lists.insert("すべて", atIndex: 0)
+        print("####ここから")
+        print(categories)
         return categories[row].name
     }
     
@@ -48,7 +53,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     func pickerView(_ pickerView: UIPickerView,
                     didSelectRow row: Int,
                     inComponent component: Int) {
-        selectedId = categories[row].id
+        if let selectedId = categories[row].id {
+            self.selectedId = selectedId
+        }
     }
     
     override func viewDidLoad() {
@@ -79,7 +86,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         AF.request(catUrl, method: .get, headers: headers).responseJSON { response in
             switch response.result {
             case .success(let value):
-                self.categories = []
+                self.categories = [Category(id: nil, name: "すべて")]
                 let json = JSON(value).arrayValue
                 
                 for categories in json {
@@ -120,7 +127,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             }
         }
     
-    func searchItems(category_id: Int, lost_desc: String, feature: String) {
+    func searchItems(category_id: Any, lost_desc: String, feature: String) {
         let searchStr = "\(consts.baseUrl)/api/items"
         
         let parameters: Parameters = [
